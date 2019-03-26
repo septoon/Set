@@ -11,9 +11,9 @@ export default class Team {
 
   addAll(...items) {
     for (const item of items) { // eslint-disable-line
-      if (this.setContainer.has(item)) throw new Error('Such character already exists');
-      if (this.setContainer.size > 4) throw new Error('Maximum 5 characters in team');
-      this.setContainer.add(item);
+      if (!this.setContainer.has(item)) {
+        this.add(item);
+      } else throw new Error('Such character already exists');
     }
   }
 
